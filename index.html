@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome file -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- bootstrap file -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- main css file -->
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="icon" href="images/113.webp">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg main-nav">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler nav-btn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#weatherNav"
+          aria-controls="weatherNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="weatherNav">
+          <ul
+            class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center nav-list"
+          >
+            <li class="nav-item page-link">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item page-link">
+              <a class="nav-link" href="#">News</a>
+            </li>
+            <li class="nav-item mx-4 nav-logo order-first order-lg-0">
+              <h1 class="m-0">
+                <a class="navbar-brand nav-link" href="#"
+                  ><i class="fa-solid fa-sun"></i> Weather</a
+                >
+              </h1>
+            </li>
+            <li class="nav-item page-link">
+              <a class="nav-link" href="#">Live cameras</a>
+            </li>
+            <li class="nav-item page-link">
+              <a href="#" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section id="weather-card" class="py-4">
+        <div class="container">
+          <div class="row gy-4 align-items-center">
+            <div class="col-lg-6 order-lg-1">
+              <div class="weather-card py-4 mt-5">
+                <div class="mb-3 position-relative searchForm">
+                  <button class="btn icon-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                  <input
+                    type="search"
+                    class="form-control rounded-5"
+                    id="weatherSearchInput"
+                    placeholder="Find your location..."
+                  />
+                </div>
+                <div class="weather-header">
+                  <div
+                    class="current-weather d-flex justify-content-center align-items-center gap-1"
+                  >
+                    <span
+                      class="current-weather-icon d-block"
+                      id="weatherIconElement"
+                    >
+                    </span>
+                    <span
+                      class="current-weather-number celli"
+                      id="currentTempElement"
+                    ></span>
+                  </div>
+                  <p class="text-capitalize fs-4 fw-medium text-center">
+                    <span id="currentConditionElement">sunny</span> in,
+                    <span id="currentCityElement"></span>
+                    <span
+                      class="d-block current-day"
+                      id="currentDayElement"
+                    ></span>
+                  </p>
+                  <div class="current-max-min-list">
+                    <div class="current-min-max-item">
+                      <span class="min-max-icon">
+                        <i class="fa-solid fa-arrow-down"></i>
+                      </span>
+                      <div class="min-max-number">
+                        <span class="d-block">min</span>
+                        <span
+                          class="celli position-relative"
+                          id="currentMinElement"
+                        >
+                          23
+                        </span>
+                      </div>
+                    </div>
+                    <div class="current-min-max-item">
+                      <span class="min-max-icon">
+                        <i class="fa-solid fa-arrow-up"></i>
+                      </span>
+                      <div class="min-max-number">
+                        <span class="d-block">max</span>
+                        <span class="celli" id="currentMaxElement"> 26 </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="weather-details">
+                  <ul class="details-list">
+                    <li class="d-flex align-items-center">
+                      <i
+                        class="chanc-rain-color fa-solid fa-cloud-showers-heavy"
+                      ></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        chance of rain
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="ChaneOfRainElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="wind-color fa-solid fa-circle-arrow-up"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        wind
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="windElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="sunries-color fa-solid fa-mountain-sun"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        sunrise
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="sunriesElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="sunset-color fa-solid fa-sun-plant-wilt"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        sunset
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="sunsetElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="pressure-color fa-solid fa-arrow-trend-up"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        pressure
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="pressureElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="humad-color fa-solid fa-droplet"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        humidity
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="humadityElement"
+                      ></span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <i class="gusts-color fa-solid fa-wind"></i>
+                      <span class="text-capitalize ms-2 details-title">
+                        gusts
+                      </span>
+                      <span
+                        class="details-value d-block ms-auto"
+                        id="gustsElement"
+                      ></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="weather-days">
+                <div class="row gy-4" id="daysRow"></div>
+              </div>
+            </div>
+            <div class="col-lg-12 order-lg-2">
+              <div class="hourly-weather" id="hourlyContainer"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- loading -->
+    <div id="loading" class="d-none">
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="300px"
+        height="300px"
+        viewBox="0 0 100 100"
+        enable-background="new 0 0 100 100"
+        xml:space="preserve"
+      >
+        <g id="sun">
+          <ellipse
+            id="sun1"
+            fill="#FBB03B"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            cx="40.791"
+            cy="61.971"
+            rx="9.23"
+            ry="9.553"
+          />
+          <g class="helloworld">
+            <path
+              id="h"
+              d="M25.466,80.425c-0.07,0-0.14,0.021-0.21,0.062l-0.995,0.624v1.954c0,0.23-0.049,0.462-0.336,0.462
+    c-0.287,0-0.336-0.231-0.336-0.462v-4.237c0-0.231,0.049-0.463,0.336-0.463c0.288,0,0.336,0.231,0.336,0.463v1.506l0.546-0.357
+    c0.175-0.112,0.378-0.225,0.602-0.225h0.448c0.133,0,0.372,0,0.651,0.245c0.301,0.26,0.287,0.547,0.301,0.911l0.07,2.115
+    c0.007,0.237-0.028,0.504-0.33,0.504c-0.273,0-0.329-0.231-0.336-0.455l-0.07-2.073c-0.014-0.322,0.007-0.574-0.371-0.574H25.466z
+    "
+            />
+            <path
+              id="e"
+              d="M29.862,83.527c-0.28,0-0.392,0-0.602-0.182l-0.287-0.253c-0.266-0.237-0.343-0.392-0.343-0.756v-1.296
+    c0-0.357,0.049-0.567,0.329-0.806l0.238-0.203c0.315-0.272,0.469-0.28,0.742-0.28h0.616c0.33,0,0.483,0.035,0.743,0.245
+    l0.273,0.218c0.308,0.245,0.351,0.504,0.351,0.875v0.539c0,0.386-0.063,0.498-0.462,0.498h-2.157v0.224
+    c0,0.063,0.049,0.147,0.098,0.196l0.168,0.182c0.091,0.099,0.224,0.127,0.448,0.127h1.443c0.224,0,0.462,0.049,0.462,0.336
+    c0,0.294-0.267,0.336-0.462,0.336H29.862z M29.302,81.454h1.947v-0.406c0-0.126,0.007-0.231-0.084-0.315l-0.259-0.224
+    c-0.084-0.077-0.217-0.084-0.322-0.084h-0.567c-0.126,0-0.231,0-0.343,0.077l-0.231,0.168c-0.084,0.062-0.14,0.112-0.14,0.308
+    V81.454z"
+            />
+            <path
+              id="l"
+              d="M35.665,82.855h0.504c0.224,0,0.462,0.049,0.462,0.336c0,0.294-0.266,0.336-0.462,0.336H34.46
+    c-0.196,0-0.462-0.042-0.462-0.336c0-0.287,0.238-0.336,0.462-0.336h0.532v-3.817H34.46c-0.196,0-0.462-0.042-0.462-0.336
+    c0-0.287,0.238-0.337,0.462-0.337h0.708c0.385,0,0.497,0.07,0.497,0.47V82.855z"
+            />
+            <path
+              id="l_1_"
+              d="M40.705,82.855h0.504c0.224,0,0.462,0.049,0.462,0.336c0,0.294-0.266,0.336-0.462,0.336H39.5
+    c-0.196,0-0.462-0.042-0.462-0.336c0-0.287,0.238-0.336,0.462-0.336h0.532v-3.817H39.5c-0.196,0-0.462-0.042-0.462-0.336
+    c0-0.287,0.238-0.337,0.462-0.337h0.708c0.385,0,0.497,0.07,0.497,0.47V82.855z"
+            />
+            <path
+              id="o"
+              d="M43.749,81.006c0-0.448,0.091-0.603,0.427-0.875c0.329-0.273,0.483-0.379,0.953-0.379h0.532
+    c0.469,0,0.623,0.105,0.953,0.379c0.336,0.272,0.427,0.427,0.427,0.875v1.268c0,0.441-0.112,0.609-0.462,0.903
+    c-0.35,0.295-0.49,0.351-0.917,0.351h-0.532c-0.427,0-0.567-0.056-0.917-0.351c-0.351-0.294-0.462-0.462-0.462-0.903V81.006z
+     M44.421,82.273c0,0.141,0.049,0.231,0.245,0.399c0.147,0.126,0.252,0.183,0.462,0.183h0.532c0.21,0,0.315-0.057,0.462-0.183
+    c0.196-0.168,0.245-0.259,0.245-0.399v-1.268c0-0.14-0.049-0.231-0.245-0.399c-0.147-0.126-0.252-0.182-0.462-0.182h-0.532
+    c-0.21,0-0.315,0.056-0.462,0.182c-0.196,0.168-0.245,0.26-0.245,0.399V82.273z"
+            />
+            <path
+              id="w"
+              d="M55.811,81.973l0.365,0.623l0.209-0.623l0.07-1.737c0.008-0.23,0.049-0.483,0.336-0.483
+    c0.295,0,0.336,0.253,0.33,0.483l-0.07,1.87l-0.33,0.995c-0.068,0.202-0.104,0.427-0.342,0.427h-0.26
+    c-0.119,0-0.217-0.126-0.279-0.217l-0.365-0.547l-0.363,0.547c-0.064,0.091-0.162,0.217-0.281,0.217h-0.258
+    c-0.238,0-0.273-0.225-0.344-0.427l-0.33-0.995l-0.07-1.87c-0.006-0.23,0.035-0.483,0.33-0.483c0.287,0,0.33,0.253,0.336,0.483
+    l0.07,1.737l0.211,0.623l0.363-0.623v-0.616c0-0.231,0.049-0.47,0.336-0.47s0.336,0.238,0.336,0.47V81.973z"
+            />
+            <path
+              id="o_1_"
+              d="M58.869,81.006c0-0.448,0.092-0.603,0.428-0.875c0.328-0.273,0.482-0.379,0.951-0.379h0.533
+    c0.469,0,0.623,0.105,0.953,0.379c0.336,0.272,0.426,0.427,0.426,0.875v1.268c0,0.441-0.111,0.609-0.461,0.903
+    c-0.352,0.295-0.49,0.351-0.918,0.351h-0.533c-0.426,0-0.566-0.056-0.916-0.351c-0.352-0.294-0.463-0.462-0.463-0.903V81.006z
+     M59.541,82.273c0,0.141,0.049,0.231,0.246,0.399c0.146,0.126,0.252,0.183,0.461,0.183h0.533c0.211,0,0.314-0.057,0.463-0.183
+    c0.195-0.168,0.244-0.259,0.244-0.399v-1.268c0-0.14-0.049-0.231-0.244-0.399c-0.148-0.126-0.252-0.182-0.463-0.182h-0.533
+    c-0.209,0-0.314,0.056-0.461,0.182c-0.197,0.168-0.246,0.26-0.246,0.399V82.273z"
+            />
+            <path
+              id="r"
+              d="M63.908,80.25c0-0.245,0.027-0.498,0.336-0.498c0.266,0,0.336,0.225,0.336,0.448v0.273l0.525-0.435
+    c0.189-0.153,0.385-0.287,0.596-0.287h0.539c0.26,0,0.477,0.084,0.658,0.267c0.225,0.224,0.301,0.455,0.301,0.764
+    c0,0.23-0.041,0.469-0.328,0.469c-0.246,0-0.344-0.196-0.344-0.413c0-0.112,0-0.196-0.07-0.294
+    c-0.084-0.119-0.244-0.119-0.406-0.119h-0.195c-0.127,0-0.217,0.062-0.336,0.161l-0.939,0.777v1.702
+    c0,0.23-0.049,0.462-0.336,0.462s-0.336-0.231-0.336-0.462V80.25z"
+            />
+            <path
+              id="l_2_"
+              d="M70.943,82.855h0.506c0.223,0,0.461,0.049,0.461,0.336c0,0.294-0.266,0.336-0.461,0.336H69.74
+    c-0.197,0-0.463-0.042-0.463-0.336c0-0.287,0.238-0.336,0.463-0.336h0.531v-3.817H69.74c-0.197,0-0.463-0.042-0.463-0.336
+    c0-0.287,0.238-0.337,0.463-0.337h0.707c0.385,0,0.496,0.07,0.496,0.47V82.855z"
+            />
+            <path
+              id="d"
+              d="M75.83,79.752c0.23,0,0.42,0.126,0.666,0.371l0.111,0.119v-1.414c0-0.231,0.049-0.463,0.336-0.463
+    s0.336,0.231,0.336,0.463v4.229c0,0.231-0.049,0.47-0.336,0.47c-0.266,0-0.336-0.225-0.336-0.448v-0.042l-0.146,0.147
+    c-0.211,0.195-0.441,0.343-0.645,0.343h-0.652c-0.223,0-0.475-0.154-0.574-0.238l-0.23-0.196c-0.279-0.237-0.371-0.42-0.371-0.777
+    v-1.352c0-0.357,0.092-0.539,0.371-0.777l0.23-0.196c0.211-0.182,0.365-0.238,0.645-0.238H75.83z M74.66,82.05
+    c0,0.188,0,0.427,0.105,0.511l0.203,0.161c0.084,0.07,0.168,0.134,0.252,0.134h0.477c0.084,0,0.203-0.057,0.328-0.169l0.387-0.329
+    c0.098-0.084,0.195-0.168,0.195-0.294v-0.848c0-0.126-0.098-0.21-0.195-0.294l-0.387-0.329c-0.125-0.112-0.244-0.168-0.328-0.168
+    h-0.477c-0.084,0-0.168,0.062-0.252,0.133l-0.203,0.161c-0.105,0.084-0.105,0.322-0.105,0.512V82.05z"
+            />
+            <path
+              id="_x21_"
+              d="M80.85,78.078c0.301,0,0.314,0.183,0.301,0.519l-0.127,2.402c-0.014,0.245-0.068,0.448-0.355,0.448
+    s-0.344-0.203-0.357-0.448l-0.127-2.402c-0.021-0.336,0.008-0.519,0.309-0.519H80.85z M80.758,82.547
+    c0.266,0,0.393,0.133,0.393,0.399v0.182c0,0.267-0.127,0.399-0.393,0.399h-0.182c-0.266,0-0.393-0.133-0.393-0.399v-0.182
+    c0-0.267,0.127-0.399,0.393-0.399H80.758z"
+            />
+          </g>
+        </g>
+        <g id="stars">
+          <g id="star5">
+            <path
+              fill="#FFFFFF"
+              d="M52.905,38.273l-0.823-0.583c-0.076-0.053-0.155-0.118-0.155-0.204c0-0.132,0.121-0.252,0.287-0.252
+    c0.091,0,0.164,0.043,0.229,0.091l0.611,0.435v-0.691c0-0.152,0.08-0.238,0.287-0.238c0.206,0,0.286,0.086,0.286,0.238v0.691
+    l0.613-0.435c0.062-0.048,0.136-0.091,0.228-0.091c0.167,0,0.286,0.12,0.286,0.252c0,0.086-0.08,0.151-0.153,0.204l-0.825,0.583
+    l0.751,0.53c0.097,0.066,0.228,0.148,0.228,0.262c0,0.132-0.119,0.246-0.286,0.246c-0.12,0-0.223-0.085-0.309-0.146l-0.532-0.379
+    v0.682c0,0.152-0.08,0.237-0.286,0.237c-0.207,0-0.287-0.084-0.287-0.237v-0.682l-0.531,0.379
+    c-0.086,0.061-0.188,0.146-0.309,0.146c-0.166,0-0.287-0.113-0.287-0.246c0-0.114,0.131-0.195,0.229-0.262L52.905,38.273z"
+            />
+          </g>
+          <g id="star4">
+            <path
+              fill="#FFFFFF"
+              d="M79.401,30.152l-0.823-0.584c-0.076-0.053-0.155-0.117-0.155-0.203c0-0.133,0.121-0.252,0.287-0.252
+    c0.091,0,0.164,0.043,0.229,0.091l0.611,0.435v-0.69c0-0.151,0.08-0.237,0.287-0.237c0.206,0,0.286,0.086,0.286,0.237v0.69
+    l0.613-0.435c0.062-0.048,0.136-0.091,0.228-0.091c0.167,0,0.286,0.119,0.286,0.252c0,0.086-0.08,0.15-0.153,0.203l-0.825,0.584
+    l0.751,0.529c0.097,0.066,0.228,0.148,0.228,0.262c0,0.133-0.119,0.246-0.286,0.246c-0.12,0-0.223-0.086-0.309-0.146l-0.532-0.379
+    v0.682c0,0.152-0.08,0.236-0.286,0.236c-0.207,0-0.287-0.084-0.287-0.236v-0.682l-0.531,0.379
+    c-0.086,0.061-0.188,0.146-0.309,0.146c-0.166,0-0.287-0.113-0.287-0.246c0-0.113,0.131-0.195,0.229-0.262L79.401,30.152z"
+            />
+          </g>
+          <g id="star3">
+            <path
+              fill="#FFFFFF"
+              d="M79.401,56.273l-0.823-0.584c-0.076-0.053-0.155-0.117-0.155-0.203c0-0.133,0.121-0.252,0.287-0.252
+    c0.091,0,0.164,0.043,0.229,0.091l0.611,0.435v-0.69c0-0.151,0.08-0.237,0.287-0.237c0.206,0,0.286,0.086,0.286,0.237v0.69
+    l0.613-0.435c0.062-0.048,0.136-0.091,0.228-0.091c0.167,0,0.286,0.119,0.286,0.252c0,0.086-0.08,0.15-0.153,0.203l-0.825,0.584
+    l0.751,0.529c0.097,0.066,0.228,0.148,0.228,0.262c0,0.133-0.119,0.246-0.286,0.246c-0.12,0-0.223-0.086-0.309-0.146l-0.532-0.379
+    v0.682c0,0.152-0.08,0.236-0.286,0.236c-0.207,0-0.287-0.084-0.287-0.236v-0.682l-0.531,0.379
+    c-0.086,0.061-0.188,0.146-0.309,0.146c-0.166,0-0.287-0.113-0.287-0.246c0-0.113,0.131-0.195,0.229-0.262L79.401,56.273z"
+            />
+          </g>
+          <g id="star2">
+            <path
+              fill="#FFFFFF"
+              d="M18.509,52.527l-0.823-0.584c-0.076-0.053-0.155-0.117-0.155-0.203c0-0.133,0.121-0.252,0.287-0.252
+    c0.091,0,0.164,0.043,0.229,0.091l0.611,0.435v-0.69c0-0.151,0.08-0.237,0.287-0.237c0.206,0,0.286,0.086,0.286,0.237v0.69
+    l0.613-0.435c0.062-0.048,0.136-0.091,0.228-0.091c0.167,0,0.286,0.119,0.286,0.252c0,0.086-0.08,0.15-0.153,0.203l-0.825,0.584
+    l0.751,0.529c0.097,0.066,0.228,0.148,0.228,0.262c0,0.133-0.119,0.246-0.286,0.246c-0.12,0-0.223-0.086-0.309-0.146l-0.532-0.379
+    v0.682c0,0.152-0.08,0.236-0.286,0.236c-0.207,0-0.287-0.084-0.287-0.236v-0.682l-0.531,0.379
+    c-0.086,0.061-0.188,0.146-0.309,0.146c-0.166,0-0.287-0.113-0.287-0.246c0-0.113,0.131-0.195,0.229-0.262L18.509,52.527z"
+            />
+          </g>
+          <g id="star1">
+            <path
+              fill="#FFFFFF"
+              d="M29.509,28.716l-0.824-0.584c-0.076-0.053-0.154-0.117-0.154-0.203c0-0.133,0.121-0.252,0.287-0.252
+    c0.09,0,0.164,0.043,0.229,0.091l0.611,0.435v-0.69c0-0.151,0.08-0.237,0.287-0.237c0.205,0,0.285,0.086,0.285,0.237v0.69
+    l0.613-0.435c0.062-0.048,0.137-0.091,0.229-0.091c0.166,0,0.285,0.119,0.285,0.252c0,0.086-0.08,0.15-0.152,0.203l-0.826,0.584
+    l0.752,0.529c0.096,0.066,0.227,0.148,0.227,0.262c0,0.133-0.119,0.246-0.285,0.246c-0.121,0-0.223-0.086-0.309-0.146
+    l-0.533-0.379v0.682c0,0.152-0.08,0.236-0.285,0.236c-0.207,0-0.287-0.084-0.287-0.236v-0.682l-0.531,0.379
+    c-0.086,0.061-0.189,0.146-0.309,0.146c-0.166,0-0.287-0.113-0.287-0.246c0-0.113,0.131-0.195,0.229-0.262L29.509,28.716z"
+            />
+          </g>
+        </g>
+        <g id="mountain">
+          <polygon
+            id="moutain3"
+            fill="#2141AA"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            points="18.318,70 32.516,45.406 
+  46.715,70   "
+          />
+          <polygon
+            id="moutain2"
+            fill="#2141AA"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            points="52.725,70 66.923,45.406 
+  81.121,70   "
+          />
+          <polygon
+            id="moutain1"
+            fill="#2141AA"
+            stroke="#FFFFFF"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            points="32.082,74 49.391,44.021 
+  66.698,74   "
+          />
+        </g>
+      </svg>
+    </div>
+    <!-- bootstrap js file  -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- main js file -->
+    <script src="js/index.js"></script>
+  </body>
+</html>
