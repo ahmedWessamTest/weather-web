@@ -76,7 +76,7 @@ weatherSearchInput.addEventListener(
 
 async function getWeather(text) {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${text}&days=4&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${text}&days=4&aqi=no&alerts=no`
   );
 
   const data = await res.json();
